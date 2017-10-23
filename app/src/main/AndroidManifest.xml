@@ -19,6 +19,8 @@
 
         <activity
             android:name=".Activity_Menu_Principal"/>
+        <activity
+            android:name=".Activity_Nuevo_Usuario"/>
     </application>
 
 </manifest>

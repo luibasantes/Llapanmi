@@ -36,7 +36,7 @@ public class Activity_Intro extends AppCompatActivity {
                     }
                 }
 
-                Intent i=new Intent(getBaseContext(),Activity_Menu_Principal.class);
+                Intent i=new Intent(getBaseContext(),Activity_Nuevo_Usuario.class);
                 startActivity(i);
 
 
