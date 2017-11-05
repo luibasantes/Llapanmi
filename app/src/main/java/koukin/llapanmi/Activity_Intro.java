@@ -18,7 +18,7 @@ public class Activity_Intro extends AppCompatActivity {
     int cont = 0;
     private Handler handler = new Handler();
     ImageView fondo;
-    Button bola1,bola2,bola3,bola4 ;
+    ImageView bola1,bola2,bola3,bola4 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,11 @@ public class Activity_Intro extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         fondo = (ImageView) findViewById(R.id.fondo);
-        final List<Button> lista = new ArrayList();
-        bola1 = (Button) findViewById(R.id.bola1);
-        bola2 = (Button) findViewById(R.id.bola2);
-        bola3 = (Button) findViewById(R.id.bola3);
-        bola4 = (Button) findViewById(R.id.bola4);
+        final List<ImageView> lista = new ArrayList();
+        bola1 = (ImageView) findViewById(R.id.iv_punto1);
+        bola2 = (ImageView) findViewById(R.id.iv_punto2);
+        bola3 = (ImageView) findViewById(R.id.iv_punto3);
+        bola4 = (ImageView) findViewById(R.id.iv_punto4);
         lista.add(bola1);
         lista.add(bola2);
         lista.add(bola3);
@@ -50,28 +50,28 @@ public class Activity_Intro extends AppCompatActivity {
                             if(pStatus%50==0){
                                 switch (cont % 4) {
                                     case 0:
-                                        bola1.setBackgroundResource(R.mipmap.punto4);
-                                        bola2.setBackgroundResource(R.mipmap.punto1);
-                                        bola3.setBackgroundResource(R.mipmap.punto2);
-                                        bola4.setBackgroundResource(R.mipmap.punto3);
+                                        bola1.setImageResource(R.mipmap.punto4);
+                                        bola2.setImageResource(R.mipmap.punto1);
+                                        bola3.setImageResource(R.mipmap.punto2);
+                                        bola4.setImageResource(R.mipmap.punto3);
                                         break;
                                     case 1:
-                                        bola1.setBackgroundResource(R.mipmap.punto3);
-                                        bola2.setBackgroundResource(R.mipmap.punto4);
-                                        bola3.setBackgroundResource(R.mipmap.punto1);
-                                        bola4.setBackgroundResource(R.mipmap.punto2);
+                                        bola1.setImageResource(R.mipmap.punto3);
+                                        bola2.setImageResource(R.mipmap.punto4);
+                                        bola3.setImageResource(R.mipmap.punto1);
+                                        bola4.setImageResource(R.mipmap.punto2);
                                         break;
                                     case 2:
-                                        bola1.setBackgroundResource(R.mipmap.punto2);
-                                        bola2.setBackgroundResource(R.mipmap.punto3);
-                                        bola3.setBackgroundResource(R.mipmap.punto4);
-                                        bola4.setBackgroundResource(R.mipmap.punto1);
+                                        bola1.setImageResource(R.mipmap.punto2);
+                                        bola2.setImageResource(R.mipmap.punto3);
+                                        bola3.setImageResource(R.mipmap.punto4);
+                                        bola4.setImageResource(R.mipmap.punto1);
                                         break;
                                     case 3:
-                                        bola1.setBackgroundResource(R.mipmap.punto1);
-                                        bola2.setBackgroundResource(R.mipmap.punto2);
-                                        bola3.setBackgroundResource(R.mipmap.punto3);
-                                        bola4.setBackgroundResource(R.mipmap.punto4);
+                                        bola1.setImageResource(R.mipmap.punto1);
+                                        bola2.setImageResource(R.mipmap.punto2);
+                                        bola3.setImageResource(R.mipmap.punto3);
+                                        bola4.setImageResource(R.mipmap.punto4);
                                         break;
 
                                     default:

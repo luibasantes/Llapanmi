@@ -30,15 +30,16 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
         input_nickname = (EditText) findViewById(R.id.input_nickname);
         image_hombre = (ImageView) findViewById(R.id.img_hombre);
         image_mujer = (ImageView) findViewById(R.id.img_mujer);
-
+        image_hombre.setAlpha(80);
+        image_mujer.setAlpha(80);
 
         image_hombre.setOnClickListener(new View.OnClickListener(){
             @Override
 
             public void onClick(View view) {
 
-                image_hombre.setAlpha(80);
-                image_mujer.setAlpha(255);
+                image_hombre.setAlpha(255);
+                image_mujer.setAlpha(80);
                 sexo="H";
             }
         });
@@ -46,8 +47,8 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                image_hombre.setAlpha(255);
-                image_mujer.setAlpha(80);
+                image_hombre.setAlpha(80);
+                image_mujer.setAlpha(255);
                 sexo="M";
             }
         });
@@ -57,8 +58,9 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(input_nickname.getText().length() > 0  && sexo!=""){
-                    Intent i=new Intent(getBaseContext(), Activity_Menu_Principal.class);
-                    i.putExtra("nickname",input_nickname.getText());
+                    Intent i=new Intent(getBaseContext(),Activity_Select_Avatar.class);
+                    i.putExtra("nickname",input_nickname.getText().toString());
+                    i.putExtra("genero",sexo);
                     startActivity(i);
                     finish();
                 }else{

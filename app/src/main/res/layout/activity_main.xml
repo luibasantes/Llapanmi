@@ -28,38 +28,42 @@
             android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/bola1"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/punto4"
+                android:id="@+id/iv_punto1"
                 android:layout_weight="1"
-                android:background="@mipmap/punto1" />
+                android:cropToPadding="false"
+                android:adjustViewBounds="true"
+                android:paddingLeft="60dp" />
 
-            <Button
-                android:id="@+id/bola2"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/punto4"
+                android:id="@+id/iv_punto2"
                 android:layout_weight="1"
-                android:background="@mipmap/punto2" />
+                android:adjustViewBounds="true"
+                android:paddingRight="0dp" />
 
-            <Button
-                android:id="@+id/bola3"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/punto4"
+                android:id="@+id/iv_punto3"
                 android:layout_weight="1"
-                android:background="@mipmap/punto3" />
+                android:adjustViewBounds="true"
+                android:paddingRight="0dp" />
 
-            <Button
-                android:id="@+id/bola4"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/punto4"
+                android:id="@+id/iv_punto4"
                 android:layout_weight="1"
-                android:background="@mipmap/punto4" />
-
+                android:adjustViewBounds="true"
+                android:paddingRight="60dp" />
         </LinearLayout>
 
     </LinearLayout>
