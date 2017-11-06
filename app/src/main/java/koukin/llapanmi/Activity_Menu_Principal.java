@@ -1,8 +1,10 @@
 package koukin.llapanmi;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,7 +26,7 @@ import java.util.Scanner;
 public class Activity_Menu_Principal extends AppCompatActivity {
 
     ImageView img_avatar;
-    Button soundButton;
+    Button soundButton,btn_logica,btn_ciencias,btn_matematicas,btn_abstracto;
     TextView nickname;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class Activity_Menu_Principal extends AppCompatActivity {
 
         img_avatar = (ImageView) findViewById(R.id.img_avatar);
         soundButton= (Button) findViewById(R.id.soundButton);
+        btn_logica= (Button) findViewById(R.id.btn_logica);
+        btn_ciencias= (Button) findViewById(R.id.btn_ciencia);
+        btn_abstracto = (Button) findViewById(R.id.btn_abstracto);
+        btn_matematicas= (Button) findViewById(R.id.btn_matematicas);
         nickname= (TextView) findViewById(R.id.tv_nickname);
 
         try {
@@ -41,7 +47,38 @@ public class Activity_Menu_Principal extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        btn_logica.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+            Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
+            i.putExtra("Tipo",0);
+            startActivity(i);
+            }
+        });
+        btn_ciencias.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
+                i.putExtra("Tipo",1);
+                startActivity(i);
+            }
+        });
+        btn_abstracto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
+                i.putExtra("Tipo",2);
+                startActivity(i);
+            }
+        });
+        btn_matematicas.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
+                i.putExtra("Tipo",3);
+                startActivity(i);
+            }
+        });
     }
 
     public void loadUserData() throws IOException {

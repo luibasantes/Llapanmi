@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".Activity_Menu_Principal" />
         <activity android:name=".Activity_Nuevo_Usuario" />
+        <activity android:name=".Activity_Preguntas" />
         <activity android:name=".Activity_Select_Avatar"></activity>
     </application>
 
