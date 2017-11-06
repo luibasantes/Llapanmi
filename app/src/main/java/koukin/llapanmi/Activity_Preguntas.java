@@ -12,14 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 public class Activity_Preguntas extends AppCompatActivity {
 
     private SectionsStatePageAdapter mSectionsStatePageAdapter;
-    private ViewPager mViewPager;
+    private CustomViewPager mViewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logica);
         mSectionsStatePageAdapter = new SectionsStatePageAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (CustomViewPager) findViewById(R.id.container);
 
         setupViewPager(mViewPager);
 
@@ -33,9 +33,14 @@ public class Activity_Preguntas extends AppCompatActivity {
         }else{
             mViewPager.setCurrentItem(0);
         }
+        mViewPager.setPagingEnabled(false);
 
     }
+    public void changeFragment(int position){
 
+        this.mViewPager.setCurrentItem(position);
+
+    }
     private void setupViewPager(ViewPager viewPager){
         SectionsStatePageAdapter adapter = new SectionsStatePageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragment_Logica(),"Logica");
@@ -44,6 +49,6 @@ public class Activity_Preguntas extends AppCompatActivity {
         adapter.addFragment(new Fragment_Matematicas(),"Matematicas");
 
         viewPager.setAdapter(adapter);
-
+        viewPager.setEnabled(false);
     }
 }

@@ -39,10 +39,10 @@ public class Activity_Select_Avatar extends AppCompatActivity {
         genero= bundle.getString("genero");
 
         final List<CarouselPicker.PickerItem> imageItems = new ArrayList<>();
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher_round));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
         CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(this, imageItems, 0);
         carousel.setAdapter(imageAdapter);
 
@@ -75,6 +75,7 @@ public class Activity_Select_Avatar extends AppCompatActivity {
                 i.putExtra("nickname",nickname);
                 i.putExtra("genero",genero);
                 startActivity(i);
+                finish();
 
             }
         });
