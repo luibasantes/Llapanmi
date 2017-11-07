@@ -7,11 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 /**
  * Created by Luigi on 06/11/2017.
  */
-
 public class Fragment_Acertado extends android.support.v4.app.Fragment{
     private static final String TAG ="Fragment5";
 

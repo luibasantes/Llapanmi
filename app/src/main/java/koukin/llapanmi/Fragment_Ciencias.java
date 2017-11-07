@@ -2,8 +2,10 @@ package koukin.llapanmi;
 
 import android.app.Fragment;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,12 +46,14 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
 
 
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Ciencias.csv")));
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Ciencias.csv"),"ISO-8859-1"), 8192);
             reader.readLine();
             String line;
             while((line=reader.readLine())!=null){
                 String [] datosPregunta= line.split(";");
                 Pregunta p = new Pregunta(datosPregunta[1],datosPregunta[2],datosPregunta[3],datosPregunta[4],datosPregunta[5],datosPregunta[1].trim());
+                System.out.println("!!!PREGUTNA: "+line+"á é í ó ú ");
                 preguntas.add(p);
             }
         } catch (IOException e) {
@@ -62,7 +66,9 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
 
         int indiceR= r.nextInt(4);
 
-        pregunta.setText(preguntas.get(indice_pregunta).getPregunta());
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/adventpro-regular.ttf");
+        pregunta.setTypeface(face);
+        pregunta.setText(Html.fromHtml(preguntas.get(indice_pregunta).getPregunta()));
 
 
         if (indiceR==0){
