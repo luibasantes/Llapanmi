@@ -72,25 +72,26 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
         public void onClick(View view) {
            switch(view.getId()){
                case R.id.opcion_A:
-                   opcionA.setBackgroundResource(R.mipmap.selectgreen);
+
+                   opcionA.setBackgroundColor(Color.GREEN);
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    break;
                case R.id.opcion_B:
-                   opcionB.setBackgroundResource(R.mipmap.selectgreen);
+                   opcionB.setBackgroundColor(Color.GREEN);
                    opcionA.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    break;
                case R.id.opcion_C:
-                   opcionC.setBackgroundResource(R.mipmap.selectgreen);
+                   opcionC.setBackgroundColor(Color.GREEN);
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionA.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    break;
                case R.id.opcion_D:
-                   opcionD.setBackgroundResource(R.mipmap.selectgreen);
+                   opcionD.setBackgroundColor(Color.GREEN);
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionA.setBackgroundColor(Color.TRANSPARENT);

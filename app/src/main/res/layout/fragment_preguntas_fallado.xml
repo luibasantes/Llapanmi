@@ -18,14 +18,37 @@
             android:layout_margin="15dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="CORRECTO!"
+            android:text="FALLASTE!"
             android:textSize="50sp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/plusfive" />
+            android:layout_gravity="center_horizontal"
+            android:text="Respuesta correcta:"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_respuesta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="respuesta"
+            android:textAlignment="viewStart"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/text_explicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="explicacion"
+            android:textAlignment="viewStart"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
