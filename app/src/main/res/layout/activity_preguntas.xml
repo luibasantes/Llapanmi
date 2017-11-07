@@ -7,15 +7,16 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@mipmap/bgred">
+        android:background="@mipmap/bgred"
+        android:orientation="vertical">
 
         <koukin.llapanmi.CustomViewPager
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </RelativeLayout>

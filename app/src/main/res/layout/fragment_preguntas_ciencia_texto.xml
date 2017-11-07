@@ -50,16 +50,15 @@
                 android:id="@+id/opcion_D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:text="Button" />
 
             <Button
                 android:id="@+id/listo"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:text="Listo"
-                android:background="@mipmap/botonregistro"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/botonregistro" />
 
         </LinearLayout>
 
