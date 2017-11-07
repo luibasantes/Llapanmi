@@ -15,6 +15,7 @@ public class Activity_Preguntas extends AppCompatActivity {
     private SectionsStatePageAdapter mSectionsStatePageAdapter;
     private CustomViewPager mViewPager;
     private LinearLayout linearlayout1;
+    private int tema;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,17 +30,17 @@ public class Activity_Preguntas extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        int value;
+
         if (extras != null) {
-            value = extras.getInt("Tipo");
-            mViewPager.setCurrentItem(value);
-            if(value==0){
+            tema = extras.getInt("Tipo");
+            mViewPager.setCurrentItem(tema);
+            if(tema ==0){
                 linearlayout1.setBackgroundResource(R.mipmap.bgblue);
-            }else if(value==1){
+            }else if(tema ==1){
                 linearlayout1.setBackgroundResource(R.mipmap.bggreen);
-            }else if(value==2){
+            }else if(tema ==2){
                 linearlayout1.setBackgroundResource(R.mipmap.bgred);
-            }else if(value==3){
+            }else if(tema ==3){
                 linearlayout1.setBackgroundResource(R.mipmap.bgyellow);
             }
         }else{
@@ -49,9 +50,15 @@ public class Activity_Preguntas extends AppCompatActivity {
 
     }
     public void changeFragment(int position){
-
+        /*
+        0-logica
+        1-ciencias
+        2-abstracto
+        3-matematicas
+        4-acertado
+        5-fallar
+        */
         this.mViewPager.setCurrentItem(position);
-
     }
     private void setupViewPager(ViewPager viewPager){
         SectionsStatePageAdapter adapter = new SectionsStatePageAdapter(getSupportFragmentManager());
@@ -59,8 +66,14 @@ public class Activity_Preguntas extends AppCompatActivity {
         adapter.addFragment(new Fragment_Ciencias(),"Ciencias");
         adapter.addFragment(new Fragment_Abstracto(),"Abstracto");
         adapter.addFragment(new Fragment_Matematicas(),"Matematicas");
+        adapter.addFragment(new Fragment_Acertado(),"Acertado");
+        adapter.addFragment(new Fragment_Fallar(),"Fallar");
 
         viewPager.setAdapter(adapter);
         viewPager.setEnabled(false);
+    }
+
+    public int getTema(){
+        return this.tema;
     }
 }
