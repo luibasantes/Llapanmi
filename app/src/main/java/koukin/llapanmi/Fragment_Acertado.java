@@ -32,6 +32,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
             public void onClick(View view) {
                 Utils.acumPoints+=5;
                 ((Activity_Preguntas)getActivity()).changeFragment(((Activity_Preguntas)getActivity()).getTema());
+
             }
         });
 
@@ -41,6 +42,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
             public void onClick(View view) {
                 Utils.acumPoints+=5;
                 System.out.println("PUNTAJE ACUMULADO: "+Utils.acumPoints);
+                ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                 Intent i=new Intent(getActivity(),Activity_Menu_Principal.class);
                 i.putExtra("section",Utils.seccionActual);
                 i.putExtra("puntaje",Utils.acumPoints);

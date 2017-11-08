@@ -46,6 +46,7 @@ public class Fragment_Fallar extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view) {
+
                 ((Activity_Preguntas)getActivity()).changeFragment(((Activity_Preguntas)getActivity()).getTema());
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                 Utils.MaxScore= 0;
