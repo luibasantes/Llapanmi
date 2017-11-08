@@ -47,7 +47,7 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
 
         try {
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Matematicas.csv"),"ISO-8859-1"), 8192);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Matematicas1.csv"),"ISO-8859-1"), 8192);
             reader.readLine();
             String line;
             while((line=reader.readLine())!=null){
@@ -64,7 +64,7 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
         boolean bandera=true;
 
         while (bandera){
-            indice_pregunta= r.nextInt(preguntas.size()+1);
+            indice_pregunta= r.nextInt(preguntas.size());
             if(((Activity_Preguntas)getActivity()).tamanoRepetidas()+1 == preguntas.size()){
                 bandera=false;
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();

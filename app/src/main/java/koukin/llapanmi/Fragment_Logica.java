@@ -33,7 +33,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_preguntas_logica_texto,container,false);
-        preguntas=new ArrayList<>();
+        /*preguntas=new ArrayList<>();
         pregunta = (TextView) view.findViewById(R.id.textoPregunta);
         opcionA = (Button) view.findViewById(R.id.opcion_A);
         opcionB = (Button) view.findViewById(R.id.opcion_B);
@@ -120,7 +120,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
         opcionD.setText(preguntas.get(indice_pregunta).getOpcionD());
         */
 
-
+        /*
         opcionA.setOnClickListener(buttonListener);
         opcionB.setOnClickListener(buttonListener);
         opcionC.setOnClickListener(buttonListener);
@@ -164,7 +164,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
                 }
             }
         });
-
+        */
         return view;
 
     }

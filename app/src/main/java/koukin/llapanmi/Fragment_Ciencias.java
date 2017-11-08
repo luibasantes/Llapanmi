@@ -66,7 +66,8 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
         boolean bandera=true;
 
         while (bandera){
-            indice_pregunta= r.nextInt(preguntas.size()+1);
+            indice_pregunta= r.nextInt(preguntas.size());
+            System.out.println(indice_pregunta);
             if(((Activity_Preguntas)getActivity()).tamanoRepetidas()+1 == preguntas.size()){
                 bandera=false;
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
