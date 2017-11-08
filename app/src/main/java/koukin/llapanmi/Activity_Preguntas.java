@@ -59,9 +59,9 @@ public class Activity_Preguntas extends AppCompatActivity {
         1-ciencias
         2-abstracto
         3-matematicas
-        4-acertado
+        4-ganaste
         5-fallar
-        6-ganaste
+        6-acertado
         */
         this.mViewPager.setCurrentItem(position);
     }
@@ -69,11 +69,12 @@ public class Activity_Preguntas extends AppCompatActivity {
         SectionsStatePageAdapter adapter = new SectionsStatePageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragment_Logica(),"Logica");
         adapter.addFragment(new Fragment_Ciencias(),"Ciencias");
-        adapter.addFragment(new Fragment_Acertijo(),"Abstracto");
+        adapter.addFragment(new Fragment_Acertijo(),"Acertijos");
         adapter.addFragment(new Fragment_Matematicas(),"Matematicas");
+        adapter.addFragment(new Fragment_Ganaste(),"Ganaste");
         adapter.addFragment(new Fragment_Acertado(),"Acertado");
         adapter.addFragment(new Fragment_Fallar(),"Fallar");
-        adapter.addFragment(new Fragment_Ganaste(),"Ganaste");
+
 
         viewPager.setAdapter(adapter);
         viewPager.setEnabled(false);

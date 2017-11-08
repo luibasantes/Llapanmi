@@ -28,6 +28,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
             @Override
             public void onClick(View view) {
                 ((Activity_Preguntas)getActivity()).changeFragment(((Activity_Preguntas)getActivity()).getTema());
+
             }
         });
 
@@ -35,6 +36,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view) {
+                ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                 Intent i=new Intent(getActivity(),Activity_Menu_Principal.class);
                 startActivity(i);
             }

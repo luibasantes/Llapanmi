@@ -142,31 +142,31 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
                 if(respuesta_usuario!=4){
                     if(respuesta_usuario==0){
                         if(opcionA.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
+                            ((Activity_Preguntas)getActivity()).changeFragment(5);
 
                         }else{
-                            ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==1){
                         if(opcionB.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==2){
                         if(opcionC.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==3){
                         if(opcionD.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }
