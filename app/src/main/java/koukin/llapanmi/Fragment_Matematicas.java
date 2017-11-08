@@ -68,7 +68,7 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
             if(((Activity_Preguntas)getActivity()).tamanoRepetidas()+1 == preguntas.size()){
                 bandera=false;
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
-                ((Activity_Preguntas)getActivity()).changeFragment(6);
+                ((Activity_Preguntas)getActivity()).changeFragment(4);
             }else{
                 if(!((Activity_Preguntas)getActivity()).existeEnRepetidas(indice_pregunta)){
                     ((Activity_Preguntas)getActivity()).addRepetidas(indice_pregunta);
