@@ -1,5 +1,6 @@
 package koukin.llapanmi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.media.MediaPlayer;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -17,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -24,16 +27,20 @@ import java.util.Scanner;
  * Created by Luigi on 21/10/2017.
  */
 
-public class Activity_Menu_Principal extends AppCompatActivity {
+public class Activity_Menu_Principal extends AppCompatActivity  implements MediaPlayer.OnPreparedListener{
 
     ImageView img_avatar;
     Button soundButton,btn_logica,btn_ciencias,btn_matematicas,btn_abstracto;
-    TextView nickname;
+    TextView nickname,score1,score2,score3,score4;
+    String gender;
+    int avatarID;
+    boolean firstInstance;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        System.out.println("SOUND VALUE: "+Utils.enabledSound);
         final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
         final MediaPlayer bgsound = MediaPlayer.create(this, R.raw.background_music);
         img_avatar = (ImageView) findViewById(R.id.img_avatar);
@@ -43,25 +50,31 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_abstracto = (Button) findViewById(R.id.btn_abstracto);
         btn_matematicas= (Button) findViewById(R.id.btn_matematicas);
         nickname= (TextView) findViewById(R.id.tv_nickname);
+        score1= (TextView)  findViewById(R.id.score1);
+        score2= (TextView)  findViewById(R.id.score2);
+        score3= (TextView)  findViewById(R.id.score3);
+        score4= (TextView)  findViewById(R.id.score4);
+        firstInstance= !Utils.enabledSound;
 
         Utils.setFont(this,nickname,"century-gotic.ttf");
-        Utils.setFont(this,(TextView) findViewById(R.id.score1),"century-gotic.ttf");
-        Utils.setFont(this,(TextView) findViewById(R.id.score2),"century-gotic.ttf");
-        Utils.setFont(this,(TextView) findViewById(R.id.score3),"century-gotic.ttf");
-        Utils.setFont(this,(TextView) findViewById(R.id.score4),"century-gotic.ttf");
+        Utils.setFont(this,score1,"century-gotic.ttf");
+        Utils.setFont(this,score2,"century-gotic.ttf");
+        Utils.setFont(this,score3,"century-gotic.ttf");
+        Utils.setFont(this,score4,"century-gotic.ttf");
         Utils.setFont(this,(TextView) findViewById(R.id.score_acertijo),"century-gotic.ttf");
         Utils.setFont(this,(TextView) findViewById(R.id.score_Ciencia),"century-gotic.ttf");
         Utils.setFont(this,(TextView) findViewById(R.id.score_Matematicas),"century-gotic.ttf");
         Utils.setFont(this,(TextView) findViewById(R.id.score_Logica),"century-gotic.ttf");
 
-        if(Utils.enabledSound) {
-            bgsound.setLooping(true);
-            bgsound.start();
-        }
         try {
             loadUserData();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if(Utils.enabledSound) {
+            bgsound.setLooping(true);
+            bgsound.start();
         }
 
         btn_logica.setOnClickListener(new View.OnClickListener(){
@@ -117,16 +130,38 @@ public class Activity_Menu_Principal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(Utils.enabledSound){
+                    soundButton.setBackgroundResource(R.mipmap.mute);
                     bgsound.stop();
                     bsound.stop();
                     Utils.enabledSound = !Utils.enabledSound;
                 }
                 else{
-                        bgsound.start();
-                        Utils.enabledSound = !Utils.enabledSound;
+                        soundButton.setBackgroundResource(R.mipmap.sonido);
+                    if(!firstInstance)
+                        try {
+                            bgsound.prepare();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    else{
+                        firstInstance=false;
+                    }
+                    bgsound.start();
+                    Utils.enabledSound = !Utils.enabledSound;
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        String s=""+nickname.getText().toString()+"|"+gender+"|"+avatarID+"\n";
+        s+= score1.getText().toString()+"|"+score2.getText().toString()+"|"+score3.getText().toString()+"|"+score4.getText().toString()+"\n";
+        s+= Utils.enabledSound ? "true" : "false";
+        s+= "\n";
+        guardarDatosUsuario(s,this);
+        System.out.println("SOUND VALUE: "+Utils.enabledSound);
     }
 
     public void loadUserData() throws IOException {
@@ -135,21 +170,57 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         if (inputStream != null) {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String receiveString = "";
             StringBuilder stringBuilder = new StringBuilder();
 
-            while ((receiveString = bufferedReader.readLine()) != null) {
-                stringBuilder.append(receiveString);
+            //LINEA DE DATOS USUARIO
+            line = bufferedReader.readLine();
+            System.out.println("MY DATA IS: "+line);
+            String[] userData = line.trim().split("\\|");
+            System.out.println("SPLIT DATA: "+Arrays.toString(userData));
+            nickname.setText(userData[0]);
+            gender = userData[1];
+            avatarID= Integer.parseInt(userData[2]);
+            img_avatar.setImageResource(Integer.parseInt(userData[2]));
+            //LINEA DE PUNTAJES
+            line= bufferedReader.readLine();
+            System.out.println("MY DATA IS: "+line);
+            userData = line.trim().split("\\|");
+            score1.setText(userData[0]);
+            score2.setText(userData[1]);
+            score3.setText(userData[2]);
+            score4.setText(userData[3]);
+            //LINEA DE SONIDO
+            line= bufferedReader.readLine();
+            System.out.println("MY DATA IS: "+line);
+            if(line.trim().equals("true")){
+                Utils.enabledSound = true;
+                soundButton.setBackgroundResource(R.mipmap.sonido);
+            }
+            else{
+                soundButton.setBackgroundResource(R.mipmap.mute);
+                Utils.enabledSound = false;
             }
             inputStream.close();
 
-            line = stringBuilder.toString();
-            System.out.println("MY DATA IS: "+line);
-            String[] userData = line.split("\\|");
-            System.out.println("SPLIT DATA: "+Arrays.toString(userData));
-            nickname.setText(userData[0]);
-            img_avatar.setImageResource(Integer.parseInt(userData[2]));
 
+
+        }
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer player) {
+        System.out.println("-----------------IS PLAYING!------------");
+        player.start();
+    }
+
+    public void guardarDatosUsuario(String data,Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("user_data.cfg", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            System.out.println("File write failed: " + e.toString());
         }
     }
 }

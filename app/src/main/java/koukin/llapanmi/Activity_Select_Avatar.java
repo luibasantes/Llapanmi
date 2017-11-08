@@ -80,7 +80,8 @@ public class Activity_Select_Avatar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 bsound.start();
-                guardarDatosUsuario(""+nickname + "|" +genero + "|" + avatar_seleccionado+"\n",Activity_Select_Avatar.this);
+                guardarDatosUsuario(""+nickname + "|" +genero + "|" + avatar_seleccionado+"\n"+"0|0|0|0\ntrue\n"
+                        ,Activity_Select_Avatar.this);
                 Intent i = new Intent(getBaseContext(),Activity_Menu_Principal.class);
                 i.putExtra("avatar",avatar_seleccionado);
                 i.putExtra("nickname",nickname);
