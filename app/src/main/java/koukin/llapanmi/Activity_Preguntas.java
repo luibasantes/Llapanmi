@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
 /**
  * Created by Luigi on 06/11/2017.
  */
@@ -16,6 +18,7 @@ public class Activity_Preguntas extends AppCompatActivity {
     private CustomViewPager mViewPager;
     private LinearLayout linearlayout1;
     private int tema;
+    private ArrayList<Integer> repetidas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class Activity_Preguntas extends AppCompatActivity {
         mViewPager = (CustomViewPager) findViewById(R.id.container);
         linearlayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
 
+        repetidas = new ArrayList<>();
         setupViewPager(mViewPager);
 
 
@@ -76,4 +80,20 @@ public class Activity_Preguntas extends AppCompatActivity {
     public int getTema(){
         return this.tema;
     }
+
+    public void vaciarRepetidas(){
+        repetidas.clear();
+    }
+    public boolean existeEnRepetidas(int indice){
+        if (repetidas.contains(indice)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void addRepetidas(int indice){
+        repetidas.add(indice);
+    }
+
 }

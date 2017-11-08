@@ -28,6 +28,8 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
     TextView pregunta;
     Button opcionA,opcionB,opcionC,opcionD,listo;
     private int respuesta_usuario , indice_pregunta;
+    private ArrayList<Integer> repetidos;
+
 
 
     @Nullable
@@ -61,8 +63,15 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
         }
 
         Random r = new Random();
+        boolean bandera=true;
+        while (bandera){
+            indice_pregunta= r.nextInt(preguntas.size()+1);
+            if(!((Activity_Preguntas)getActivity()).existeEnRepetidas(indice_pregunta)){
+                ((Activity_Preguntas)getActivity()).addRepetidas(indice_pregunta);
+                bandera=false;
+            }
+        }
 
-        indice_pregunta= r.nextInt(preguntas.size()+1);
 
         int indiceR= r.nextInt(4);
 
@@ -120,26 +129,31 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
                     if(respuesta_usuario==0){
                         if(opcionA.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(4);
+
                         }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==1){
                         if(opcionB.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(4);
                         }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==2){
                         if(opcionC.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(4);
                         }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==3){
                         if(opcionD.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(4);
                         }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }
                 }
