@@ -54,9 +54,14 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
             String line;
             while((line=reader.readLine())!=null){
                 String [] datosPregunta= line.split(";");
-                Pregunta p = new Pregunta(datosPregunta[1],datosPregunta[2],datosPregunta[3],datosPregunta[4],datosPregunta[5],datosPregunta[1].trim());
-                System.out.println("!!!PREGUNTA: "+line+"á é í ó ú ");
-                preguntas.add(p);
+                try {
+                    Pregunta p = new Pregunta(datosPregunta[1], datosPregunta[2], datosPregunta[3], datosPregunta[4], datosPregunta[5], datosPregunta[1].trim());
+                    preguntas.add(p);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+
             }
         } catch (IOException e) {
             e.printStackTrace() ;

@@ -1,6 +1,7 @@
 package koukin.llapanmi;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,6 +31,8 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_usuario);
 
+        final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
+        final MediaPlayer esound = MediaPlayer.create(this, R.raw.error);
         btn_listo = (Button) findViewById(R.id.btn_listo);
         input_nickname = (EditText) findViewById(R.id.input_nickname);
         image_hombre = (ImageView) findViewById(R.id.img_hombre);
@@ -62,12 +65,14 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(input_nickname.getText().length() > 0  && sexo!=""){
+                    bsound.start();
                     Intent i=new Intent(getBaseContext(),Activity_Select_Avatar.class);
                     i.putExtra("nickname",input_nickname.getText().toString());
                     i.putExtra("genero",sexo);
                     startActivity(i);
                     finish();
                 }else{
+                    esound.start();
                     input_nickname.setHint("Porfavor, ingresa tu nickname!!!!");
                 }
 
