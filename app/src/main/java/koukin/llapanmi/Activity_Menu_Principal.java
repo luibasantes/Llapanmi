@@ -2,6 +2,7 @@ package koukin.llapanmi;
 
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,6 +34,8 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
+        final MediaPlayer bgsound = MediaPlayer.create(this, R.raw.background_music);
         img_avatar = (ImageView) findViewById(R.id.img_avatar);
         soundButton= (Button) findViewById(R.id.soundButton);
         btn_logica= (Button) findViewById(R.id.btn_logica);
@@ -51,6 +54,10 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         Utils.setFont(this,(TextView) findViewById(R.id.score_Matematicas),"century-gotic.ttf");
         Utils.setFont(this,(TextView) findViewById(R.id.score_Logica),"century-gotic.ttf");
 
+        if(Utils.enabledSound) {
+            bgsound.setLooping(true);
+            bgsound.start();
+        }
         try {
             loadUserData();
         } catch (IOException e) {
@@ -60,6 +67,10 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_logica.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                if(Utils.enabledSound){
+                    bsound.start();
+                    bgsound.stop();
+                }
             Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
             i.putExtra("Tipo",0);
             startActivity(i);
@@ -68,6 +79,10 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_ciencias.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                if(Utils.enabledSound) {
+                    bsound.start();
+                    bgsound.stop();
+                }
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",1);
                 startActivity(i);
@@ -76,6 +91,10 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_abstracto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                if(Utils.enabledSound) {
+                    bsound.start();
+                    bgsound.stop();
+                }
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",2);
                 startActivity(i);
@@ -84,9 +103,28 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_matematicas.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                if(Utils.enabledSound){
+                    bsound.start();
+                    bgsound.stop();
+                }
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",3);
                 startActivity(i);
+            }
+        });
+
+        soundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Utils.enabledSound){
+                    bgsound.stop();
+                    bsound.stop();
+                    Utils.enabledSound = !Utils.enabledSound;
+                }
+                else{
+                        bgsound.start();
+                        Utils.enabledSound = !Utils.enabledSound;
+                }
             }
         });
     }

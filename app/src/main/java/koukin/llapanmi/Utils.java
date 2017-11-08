@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class Utils {
 
+    public static boolean enabledSound= true;
+
     public static void setFont(Context c, TextView tv,String font){
         Typeface face = Typeface.createFromAsset(c.getAssets(), "fonts/"+font);
         tv.setTypeface(face);

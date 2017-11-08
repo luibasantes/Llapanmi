@@ -3,6 +3,7 @@ package koukin.llapanmi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class Activity_Select_Avatar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
+        final MediaPlayer crsound = MediaPlayer.create(this, R.raw.blip);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__select__avatar);
         carousel= (CarouselPicker) findViewById(R.id.avatar_carousel);
@@ -43,19 +46,24 @@ public class Activity_Select_Avatar extends AppCompatActivity {
         final List<CarouselPicker.PickerItem> imageItems = new ArrayList<>();
         imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
         imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h2));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h3));
         imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_m1));
         imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_m2));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_m3));
+        avatar_seleccionado=R.mipmap.avatar_h1;
+
+
         CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(this, imageItems, 0);
         carousel.setAdapter(imageAdapter);
 
         carousel.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
+                crsound.start();
                 if(imageItems.get(position).hasDrawable()){
                     avatar_seleccionado = imageItems.get(position).getDrawable();
                 }
@@ -71,6 +79,7 @@ public class Activity_Select_Avatar extends AppCompatActivity {
         btnListo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bsound.start();
                 guardarDatosUsuario(""+nickname + "|" +genero + "|" + avatar_seleccionado+"\n",Activity_Select_Avatar.this);
                 Intent i = new Intent(getBaseContext(),Activity_Menu_Principal.class);
                 i.putExtra("avatar",avatar_seleccionado);
