@@ -69,7 +69,7 @@ public class Activity_Preguntas extends AppCompatActivity {
         SectionsStatePageAdapter adapter = new SectionsStatePageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragment_Logica(),"Logica");
         adapter.addFragment(new Fragment_Ciencias(),"Ciencias");
-        adapter.addFragment(new Fragment_Abstracto(),"Abstracto");
+        adapter.addFragment(new Fragment_Acertijo(),"Abstracto");
         adapter.addFragment(new Fragment_Matematicas(),"Matematicas");
         adapter.addFragment(new Fragment_Acertado(),"Acertado");
         adapter.addFragment(new Fragment_Fallar(),"Fallar");

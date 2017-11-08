@@ -1,6 +1,5 @@
 package koukin.llapanmi;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +20,8 @@ import java.util.Random;
  * Created by Luigi on 06/11/2017.
  */
 
-public class Fragment_Logica extends android.support.v4.app.Fragment{
+public class Fragment_Acertijo extends android.support.v4.app.Fragment{
+    private static final String TAG ="Fragment3";
     ArrayList<Pregunta> preguntas;
     TextView pregunta;
     Button opcionA,opcionB,opcionC,opcionD,listo;
@@ -32,7 +32,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_preguntas_logica_texto,container,false);
+        View view = inflater.inflate(R.layout.fragment_preguntas_acertijo_texto,container,false);
         preguntas=new ArrayList<>();
         pregunta = (TextView) view.findViewById(R.id.textoPregunta);
         opcionA = (Button) view.findViewById(R.id.opcion_A);
@@ -46,7 +46,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
 
         try {
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Logica.csv"),"ISO-8859-1"), 8192);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open("Acertijos.csv"),"ISO-8859-1"), 8192);
             reader.readLine();
             String line;
             while((line=reader.readLine())!=null){
@@ -176,39 +176,34 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
             switch(view.getId()){
                 case R.id.opcion_A:
 
-                    opcionA.setBackgroundColor(Color.CYAN);
+                    opcionA.setBackgroundColor(Color.rgb(238,130,238));
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
                     break;
                 case R.id.opcion_B:
-                    opcionB.setBackgroundColor(Color.CYAN);
+                    opcionB.setBackgroundColor(Color.rgb(238,130,238));
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
                     break;
                 case R.id.opcion_C:
-                    opcionC.setBackgroundColor(Color.CYAN);
+                    opcionC.setBackgroundColor(Color.rgb(238,130,238));
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
                     break;
                 case R.id.opcion_D:
-                    opcionD.setBackgroundColor(Color.CYAN);
+                    opcionD.setBackgroundColor(Color.rgb(238,130,238));
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
                     break;
                 default:
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=4;
                     break;
             }
         }

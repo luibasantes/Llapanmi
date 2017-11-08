@@ -28,7 +28,7 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
     TextView pregunta;
     Button opcionA,opcionB,opcionC,opcionD,listo;
     private int respuesta_usuario , indice_pregunta;
-    private ArrayList<Integer> repetidos;
+
 
 
 
