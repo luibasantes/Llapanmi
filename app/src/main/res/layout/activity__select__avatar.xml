@@ -21,13 +21,13 @@
             app:srcCompat="@mipmap/logojuego" />
 
         <TextView
-            android:id="@+id/label"
+            android:id="@+id/avatar_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="Escoge tu avatar"
-            />
+            android:textSize="14sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"

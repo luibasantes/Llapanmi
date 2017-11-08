@@ -58,7 +58,7 @@
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@mipmap/botonregistro" />
+                android:background="@mipmap/ok_verde" />
 
         </LinearLayout>
 

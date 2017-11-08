@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,11 +39,12 @@ public class Activity_Select_Avatar extends AppCompatActivity {
         nickname= bundle.getString("nickname");
         genero= bundle.getString("genero");
 
+        Utils.setFont(this,(TextView)findViewById(R.id.avatar_label),"century-gotic.ttf");
         final List<CarouselPicker.PickerItem> imageItems = new ArrayList<>();
         imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
-        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h1));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_h2));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_m1));
+        imageItems.add(new CarouselPicker.DrawableItem(R.mipmap.avatar_m2));
         CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(this, imageItems, 0);
         carousel.setAdapter(imageAdapter);
 

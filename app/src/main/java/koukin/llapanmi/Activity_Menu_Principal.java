@@ -41,6 +41,16 @@ public class Activity_Menu_Principal extends AppCompatActivity {
         btn_matematicas= (Button) findViewById(R.id.btn_matematicas);
         nickname= (TextView) findViewById(R.id.tv_nickname);
 
+        Utils.setFont(this,nickname,"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score1),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score2),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score3),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score4),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score_acertijo),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score_Ciencia),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score_Matematicas),"century-gotic.ttf");
+        Utils.setFont(this,(TextView) findViewById(R.id.score_Logica),"century-gotic.ttf");
+
         try {
             loadUserData();
         } catch (IOException e) {

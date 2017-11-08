@@ -66,8 +66,12 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
 
         int indiceR= r.nextInt(4);
 
-        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/adventpro-regular.ttf");
-        pregunta.setTypeface(face);
+        Utils.setFont(getActivity(),pregunta,"century-gotic.ttf");
+        Utils.setFont(getActivity(),opcionA,"century-gotic.ttf");
+        Utils.setFont(getActivity(),opcionB,"century-gotic.ttf");
+        Utils.setFont(getActivity(),opcionC,"century-gotic.ttf");
+        Utils.setFont(getActivity(),opcionD,"century-gotic.ttf");
+
         pregunta.setText(Html.fromHtml(preguntas.get(indice_pregunta).getPregunta()));
 
 
@@ -152,28 +156,28 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
            switch(view.getId()){
                case R.id.opcion_A:
 
-                   opcionA.setBackgroundColor(Color.GREEN);
+                   opcionA.setBackgroundColor(Color.rgb(212,239,162));
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    respuesta_usuario=0;
                    break;
                case R.id.opcion_B:
-                   opcionB.setBackgroundColor(Color.GREEN);
+                   opcionB.setBackgroundColor(Color.rgb(212,239,162));
                    opcionA.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    respuesta_usuario=1;
                    break;
                case R.id.opcion_C:
-                   opcionC.setBackgroundColor(Color.GREEN);
+                   opcionC.setBackgroundColor(Color.rgb(212,239,162));
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionA.setBackgroundColor(Color.TRANSPARENT);
                    opcionD.setBackgroundColor(Color.TRANSPARENT);
                    respuesta_usuario=2;
                    break;
                case R.id.opcion_D:
-                   opcionD.setBackgroundColor(Color.GREEN);
+                   opcionD.setBackgroundColor(Color.rgb(212,239,162));
                    opcionB.setBackgroundColor(Color.TRANSPARENT);
                    opcionC.setBackgroundColor(Color.TRANSPARENT);
                    opcionA.setBackgroundColor(Color.TRANSPARENT);
