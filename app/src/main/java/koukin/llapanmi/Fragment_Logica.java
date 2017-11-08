@@ -33,7 +33,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_preguntas_logica_texto,container,false);
-        /*preguntas=new ArrayList<>();
+        preguntas=new ArrayList<>();
         pregunta = (TextView) view.findViewById(R.id.textoPregunta);
         opcionA = (Button) view.findViewById(R.id.opcion_A);
         opcionB = (Button) view.findViewById(R.id.opcion_B);
@@ -63,11 +63,11 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
         boolean bandera=true;
 
         while (bandera){
-            indice_pregunta= r.nextInt(preguntas.size()+1);
+            indice_pregunta= r.nextInt(preguntas.size());
             if(((Activity_Preguntas)getActivity()).tamanoRepetidas()+1 == preguntas.size()){
                 bandera=false;
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
-                ((Activity_Preguntas)getActivity()).changeFragment(6);
+                ((Activity_Preguntas)getActivity()).changeFragment(4);
             }else{
                 if(!((Activity_Preguntas)getActivity()).existeEnRepetidas(indice_pregunta)){
                     ((Activity_Preguntas)getActivity()).addRepetidas(indice_pregunta);
@@ -120,7 +120,7 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
         opcionD.setText(preguntas.get(indice_pregunta).getOpcionD());
         */
 
-        /*
+
         opcionA.setOnClickListener(buttonListener);
         opcionB.setOnClickListener(buttonListener);
         opcionC.setOnClickListener(buttonListener);
@@ -133,38 +133,38 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
                 if(respuesta_usuario!=4){
                     if(respuesta_usuario==0){
                         if(opcionA.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
+                            ((Activity_Preguntas)getActivity()).changeFragment(5);
 
                         }else{
-                            ((Activity_Preguntas)getActivity()).changeFragment(5);
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==1){
                         if(opcionB.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==2){
                         if(opcionC.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==3){
                         if(opcionD.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
-                        }else{
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
+                        }else{
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }
                 }
             }
         });
-        */
+
         return view;
 
     }
@@ -187,21 +187,21 @@ public class Fragment_Logica extends android.support.v4.app.Fragment{
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
+                    respuesta_usuario=1;
                     break;
                 case R.id.opcion_C:
                     opcionC.setBackgroundColor(Color.CYAN);
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
                     opcionD.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
+                    respuesta_usuario=2;
                     break;
                 case R.id.opcion_D:
                     opcionD.setBackgroundColor(Color.CYAN);
                     opcionB.setBackgroundColor(Color.TRANSPARENT);
                     opcionC.setBackgroundColor(Color.TRANSPARENT);
                     opcionA.setBackgroundColor(Color.TRANSPARENT);
-                    respuesta_usuario=0;
+                    respuesta_usuario=3;
                     break;
                 default:
                     opcionA.setBackgroundColor(Color.TRANSPARENT);

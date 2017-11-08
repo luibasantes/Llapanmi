@@ -60,8 +60,8 @@ public class Activity_Preguntas extends AppCompatActivity {
         2-abstracto
         3-matematicas
         4-ganaste
-        5-fallar
-        6-acertado
+        5-acertado
+        6-fallar
         */
         this.mViewPager.setCurrentItem(position);
     }
