@@ -61,6 +61,7 @@ public class Activity_Preguntas extends AppCompatActivity {
         3-matematicas
         4-acertado
         5-fallar
+        6-ganaste
         */
         this.mViewPager.setCurrentItem(position);
     }
@@ -72,6 +73,7 @@ public class Activity_Preguntas extends AppCompatActivity {
         adapter.addFragment(new Fragment_Matematicas(),"Matematicas");
         adapter.addFragment(new Fragment_Acertado(),"Acertado");
         adapter.addFragment(new Fragment_Fallar(),"Fallar");
+        adapter.addFragment(new Fragment_Ganaste(),"Ganaste");
 
         viewPager.setAdapter(adapter);
         viewPager.setEnabled(false);
@@ -84,6 +86,7 @@ public class Activity_Preguntas extends AppCompatActivity {
     public void vaciarRepetidas(){
         repetidas.clear();
     }
+
     public boolean existeEnRepetidas(int indice){
         if (repetidas.contains(indice)){
             return true;
@@ -94,6 +97,10 @@ public class Activity_Preguntas extends AppCompatActivity {
 
     public void addRepetidas(int indice){
         repetidas.add(indice);
+    }
+
+    public int tamanoRepetidas(){
+        return repetidas.size();
     }
 
 }

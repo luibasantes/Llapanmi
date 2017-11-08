@@ -55,7 +55,7 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
             while((line=reader.readLine())!=null){
                 String [] datosPregunta= line.split(";");
                 Pregunta p = new Pregunta(datosPregunta[1],datosPregunta[2],datosPregunta[3],datosPregunta[4],datosPregunta[5],datosPregunta[1].trim());
-                System.out.println("!!!PREGUTNA: "+line+"á é í ó ú ");
+                System.out.println("!!!PREGUNTA: "+line+"á é í ó ú ");
                 preguntas.add(p);
             }
         } catch (IOException e) {
@@ -64,12 +64,20 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
 
         Random r = new Random();
         boolean bandera=true;
+
         while (bandera){
             indice_pregunta= r.nextInt(preguntas.size()+1);
-            if(!((Activity_Preguntas)getActivity()).existeEnRepetidas(indice_pregunta)){
-                ((Activity_Preguntas)getActivity()).addRepetidas(indice_pregunta);
+            if(((Activity_Preguntas)getActivity()).tamanoRepetidas()+1 == preguntas.size()){
                 bandera=false;
+                ((Activity_Preguntas)getActivity()).vaciarRepetidas();
+                ((Activity_Preguntas)getActivity()).changeFragment(6);
+            }else{
+                if(!((Activity_Preguntas)getActivity()).existeEnRepetidas(indice_pregunta)){
+                    ((Activity_Preguntas)getActivity()).addRepetidas(indice_pregunta);
+                    bandera=false;
+                }
             }
+
         }
 
 
