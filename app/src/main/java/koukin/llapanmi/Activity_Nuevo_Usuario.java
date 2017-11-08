@@ -33,6 +33,8 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
 
         final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
         final MediaPlayer esound = MediaPlayer.create(this, R.raw.error);
+        final MediaPlayer bpsound = MediaPlayer.create(this, R.raw.blip);
+
         btn_listo = (Button) findViewById(R.id.btn_listo);
         input_nickname = (EditText) findViewById(R.id.input_nickname);
         image_hombre = (ImageView) findViewById(R.id.img_hombre);
@@ -44,7 +46,7 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-
+                bpsound.start();
                 image_hombre.setAlpha(255);
                 image_mujer.setAlpha(80);
                 sexo="H";
@@ -54,6 +56,7 @@ public class Activity_Nuevo_Usuario extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
+                bpsound.start();
                 image_hombre.setAlpha(80);
                 image_mujer.setAlpha(255);
                 sexo="M";

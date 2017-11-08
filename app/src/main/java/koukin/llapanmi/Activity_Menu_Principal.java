@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,7 +42,6 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-
         System.out.println("SOUND VALUE: "+Utils.enabledSound);
         final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
         final MediaPlayer bgsound = MediaPlayer.create(this, R.raw.background_music);
@@ -77,9 +79,19 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
             bgsound.start();
         }
 
+        Bundle bl = getIntent().getExtras();
+        String seccion=bl.getString("section");
+        int puntaje=bl.getInt("puntaje");
+        System.out.println("THIS SECTION000: "+seccion);
+        if(seccion!=null) {
+            System.out.println("INGRESO A LA VERIFICACION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            verificarPuntaje(seccion, puntaje);
+        }
         btn_logica.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Utils.acumPoints=0;
+                Utils.MaxScore=0;
                 if(Utils.enabledSound){
                     bsound.start();
                     bgsound.stop();
@@ -92,6 +104,8 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         btn_ciencias.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Utils.acumPoints=0;
+                Utils.MaxScore=0;
                 if(Utils.enabledSound) {
                     bsound.start();
                     bgsound.stop();
@@ -104,6 +118,8 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         btn_abstracto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Utils.acumPoints=0;
+                Utils.MaxScore=0;
                 if(Utils.enabledSound) {
                     bsound.start();
                     bgsound.stop();
@@ -116,6 +132,8 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         btn_matematicas.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Utils.acumPoints=0;
+                Utils.MaxScore=0;
                 if(Utils.enabledSound){
                     bsound.start();
                     bgsound.stop();
@@ -221,6 +239,98 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         }
         catch (IOException e) {
             System.out.println("File write failed: " + e.toString());
+        }
+    }
+
+    public void verificarPuntaje(String seccion,int puntaje){
+        int puntajeActual;
+        AlertDialog.Builder mBuilder;
+        Button ok;
+        TextView tv_pop;
+        View mView;
+        final AlertDialog dialog;
+        System.out.println("LA SECCION ESCOGIDA: "+seccion);
+        switch(seccion){
+            case "ciencias":
+                puntajeActual= Integer.parseInt(score1.getText().toString());
+                if(puntaje>puntajeActual){
+                    score1.setText(""+puntaje);
+                    mBuilder = new AlertDialog.Builder(this);
+                    mView = getLayoutInflater().inflate(R.layout.pop_score, null);
+                    tv_pop= (TextView) mView.findViewById(R.id.pop_tv);
+                    tv_pop.setText(""+puntaje);
+                    ok= (Button) mView.findViewById(R.id.ok_pop);
+                    mBuilder.setView(mView);
+                    dialog = mBuilder.create();
+                    dialog.show();
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                dialog.dismiss();
+                        }
+                    });
+                }
+                break;
+            case "mate":
+                puntajeActual= Integer.parseInt(score1.getText().toString());
+                if(puntaje>puntajeActual){
+                    score2.setText(""+puntaje);
+                    mBuilder = new AlertDialog.Builder(this);
+                    mView = getLayoutInflater().inflate(R.layout.pop_score, null);
+                    tv_pop= (TextView) mView.findViewById(R.id.pop_tv);
+                    tv_pop.setText(""+puntaje);
+                    ok= (Button) mView.findViewById(R.id.ok_pop);
+                    mBuilder.setView(mView);
+                    dialog = mBuilder.create();
+                    dialog.show();
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                }
+                break;
+            case "acertijo":
+                puntajeActual= Integer.parseInt(score1.getText().toString());
+                if(puntaje>puntajeActual){
+                    score3.setText(""+puntaje);
+                    mBuilder = new AlertDialog.Builder(this);
+                    mView = getLayoutInflater().inflate(R.layout.pop_score, null);
+                    tv_pop= (TextView) mView.findViewById(R.id.pop_tv);
+                    tv_pop.setText(""+puntaje);
+                    ok= (Button) mView.findViewById(R.id.ok_pop);
+                    mBuilder.setView(mView);
+                    dialog = mBuilder.create();
+                    dialog.show();
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                }
+                break;
+            case "logica":
+                puntajeActual= Integer.parseInt(score1.getText().toString());
+                if(puntaje>puntajeActual){
+                    score4.setText(""+puntaje);
+                    mBuilder = new AlertDialog.Builder(this);
+                    mView = getLayoutInflater().inflate(R.layout.pop_score, null);
+                    tv_pop= (TextView) mView.findViewById(R.id.pop_tv);
+                    tv_pop.setText(""+puntaje);
+                    ok= (Button) mView.findViewById(R.id.ok_pop);
+                    mBuilder.setView(mView);
+                    dialog = mBuilder.create();
+                    dialog.show();
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                }
+                break;
         }
     }
 }

@@ -1,6 +1,7 @@
 package koukin.llapanmi;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +95,14 @@ public class Activity_Intro extends AppCompatActivity {
 
                 }
 
-                Intent i=new Intent(getBaseContext(),Activity_Nuevo_Usuario.class);
-                startActivity(i);
+                if(!isAssetExists("user_data.cfg")) {
+                    Intent i = new Intent(getBaseContext(), Activity_Nuevo_Usuario.class);
+                    startActivity(i);
+                }
+                else{
+                    Intent i = new Intent(getBaseContext(), Activity_Menu_Principal.class);
+                    startActivity(i);
+                }
 
 
                 finish();
@@ -106,5 +114,20 @@ public class Activity_Intro extends AppCompatActivity {
         };
         thread.start();
 
+    }
+
+    private boolean isAssetExists(String pathInAssetsDir){
+        AssetManager assetManager = this.getResources().getAssets();
+        InputStream inputStream = null;
+        try {
+            inputStream = assetManager.open(pathInAssetsDir);
+            if(null != inputStream ) {
+                inputStream.close();
+                return true;
+            }
+        }  catch(IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

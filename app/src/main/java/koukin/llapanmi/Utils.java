@@ -13,6 +13,11 @@ import android.widget.TextView;
 public class Utils {
 
     public static boolean enabledSound= true;
+    public static String respuesta;
+    public static String explicacion;
+    public static int acumPoints=0;
+    public static int MaxScore=0;
+    public static String seccionActual="";
 
     public static void setFont(Context c, TextView tv,String font){
         Typeface face = Typeface.createFromAsset(c.getAssets(), "fonts/"+font);

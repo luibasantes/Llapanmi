@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.sql.SQLOutput;
+
 /**
  * Created by Luigi on 06/11/2017.
  */
@@ -27,6 +30,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view) {
+                Utils.acumPoints+=5;
                 ((Activity_Preguntas)getActivity()).changeFragment(((Activity_Preguntas)getActivity()).getTema());
             }
         });
@@ -35,7 +39,11 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view) {
+                Utils.acumPoints+=5;
+                System.out.println("PUNTAJE ACUMULADO: "+Utils.acumPoints);
                 Intent i=new Intent(getActivity(),Activity_Menu_Principal.class);
+                i.putExtra("section",Utils.seccionActual);
+                i.putExtra("puntaje",Utils.acumPoints);
                 startActivity(i);
             }
         });
