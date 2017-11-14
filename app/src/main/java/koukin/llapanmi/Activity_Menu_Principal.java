@@ -38,13 +38,18 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
     String gender;
     int avatarID;
     boolean firstInstance;
+    String seccion;
+    int puntaje;
+    MediaPlayer bsound = null;
+    MediaPlayer bgsound=null;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         System.out.println("SOUND VALUE: "+Utils.enabledSound);
-        final MediaPlayer bsound = MediaPlayer.create(this, R.raw.buttons);
-        final MediaPlayer bgsound = MediaPlayer.create(this, R.raw.background_music);
+        bsound = MediaPlayer.create(this, R.raw.buttons);
+        bgsound = MediaPlayer.create(this, R.raw.background_music);
         img_avatar = (ImageView) findViewById(R.id.img_avatar);
         soundButton= (Button) findViewById(R.id.soundButton);
         btn_logica= (Button) findViewById(R.id.btn_logica);
@@ -79,9 +84,14 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
             bgsound.start();
         }
 
+        System.out.println("MAX VALUES: "+Utils.MaxScore);
+        System.out.println("CCUM SUM: "+Utils.acumPoints);
+
         Bundle bl = getIntent().getExtras();
-        String seccion=bl.getString("section");
-        int puntaje=bl.getInt("puntaje");
+        if(bl!=null) {
+            seccion = bl.getString("section");
+            puntaje = bl.getInt("puntaje");
+        }
         System.out.println("THIS SECTION000: "+seccion);
         if(seccion!=null) {
             System.out.println("INGRESO A LA VERIFICACION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -99,6 +109,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
             Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
             i.putExtra("Tipo",0);
             startActivity(i);
+                finish();
             }
         });
         btn_ciencias.setOnClickListener(new View.OnClickListener(){
@@ -113,6 +124,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",1);
                 startActivity(i);
+                finish();
             }
         });
         btn_abstracto.setOnClickListener(new View.OnClickListener(){
@@ -127,6 +139,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",2);
                 startActivity(i);
+                finish();
             }
         });
         btn_matematicas.setOnClickListener(new View.OnClickListener(){
@@ -141,6 +154,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 Intent i=new Intent(getBaseContext(),Activity_Preguntas.class);
                 i.putExtra("Tipo",3);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -182,6 +196,21 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         System.out.println("SOUND VALUE: "+Utils.enabledSound);
     }
 
+
+    @Override
+    public void onPrepared(MediaPlayer player) {
+        System.out.println("-----------------IS PLAYING!------------");
+        player.start();
+        bsound.stop();
+        bgsound.stop();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Activity_Menu_Principal.this.finish();
+
+    }
+
     public void loadUserData() throws IOException {
         String line;
         InputStream inputStream = Activity_Menu_Principal.this.openFileInput("user_data.cfg");
@@ -219,16 +248,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 Utils.enabledSound = false;
             }
             inputStream.close();
-
-
-
         }
-    }
-
-    @Override
-    public void onPrepared(MediaPlayer player) {
-        System.out.println("-----------------IS PLAYING!------------");
-        player.start();
     }
 
     public void guardarDatosUsuario(String data,Context context) {
@@ -250,6 +270,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
         View mView;
         final AlertDialog dialog;
         System.out.println("LA SECCION ESCOGIDA: "+seccion);
+        System.out.println("PUNTAJE EXTRAIDO: "+puntaje);
         switch(seccion){
             case "ciencias":
                 puntajeActual= Integer.parseInt(score1.getText().toString());
@@ -272,7 +293,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 }
                 break;
             case "mate":
-                puntajeActual= Integer.parseInt(score1.getText().toString());
+                puntajeActual= Integer.parseInt(score2.getText().toString());
                 if(puntaje>puntajeActual){
                     score2.setText(""+puntaje);
                     mBuilder = new AlertDialog.Builder(this);
@@ -292,7 +313,7 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 }
                 break;
             case "acertijo":
-                puntajeActual= Integer.parseInt(score1.getText().toString());
+                puntajeActual= Integer.parseInt(score3.getText().toString());
                 if(puntaje>puntajeActual){
                     score3.setText(""+puntaje);
                     mBuilder = new AlertDialog.Builder(this);
@@ -312,7 +333,10 @@ public class Activity_Menu_Principal extends AppCompatActivity  implements Media
                 }
                 break;
             case "logica":
-                puntajeActual= Integer.parseInt(score1.getText().toString());
+                System.out.println("ENTRO A LOGICA");
+                puntajeActual= Integer.parseInt(score4.getText().toString());
+                System.out.println("PUNTAJE ACTUAL: "+puntajeActual);
+                System.out.println("PUNTAJE OBTENIODO: "+puntaje);
                 if(puntaje>puntajeActual){
                     score4.setText(""+puntaje);
                     mBuilder = new AlertDialog.Builder(this);

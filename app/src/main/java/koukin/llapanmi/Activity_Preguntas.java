@@ -1,5 +1,6 @@
 package koukin.llapanmi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -53,6 +54,14 @@ public class Activity_Preguntas extends AppCompatActivity {
         mViewPager.setPagingEnabled(false);
 
     }
+
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(getBaseContext(),Activity_Menu_Principal.class);
+        startActivity(i);
+        finish();
+    }
+
     public void changeFragment(int position){
         /*
         0-logica
@@ -89,6 +98,7 @@ public class Activity_Preguntas extends AppCompatActivity {
     }
 
     public boolean existeEnRepetidas(int indice){
+
         if (repetidas.contains(indice)){
             return true;
         }else{

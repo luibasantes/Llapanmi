@@ -148,7 +148,7 @@ public class Fragment_Ciencias extends android.support.v4.app.Fragment{
                         }else{
                             Utils.respuesta = preguntas.get(indice_pregunta).getRespuesta();
                             Utils.explicacion = preguntas.get(indice_pregunta).getExplicacion();
-                            ((Activity_Preguntas)getActivity()).changeFragment(4);
+                            ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
                     }else if(respuesta_usuario==1){

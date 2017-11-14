@@ -52,9 +52,14 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
             String line;
             while((line=reader.readLine())!=null){
                 String [] datosPregunta= line.split(";");
-                Pregunta p = new Pregunta(datosPregunta[1],datosPregunta[2],datosPregunta[3],datosPregunta[4],datosPregunta[5],datosPregunta[1].trim());
+                try {
+                    Pregunta p = new Pregunta(datosPregunta[1], datosPregunta[2], datosPregunta[3], datosPregunta[4], datosPregunta[5], datosPregunta[6].trim());
+                    preguntas.add(p);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
                 System.out.println("!!!PREGUNTA: "+line+"á é í ó ú ");
-                preguntas.add(p);
             }
         } catch (IOException e) {
             e.printStackTrace() ;
@@ -132,11 +137,14 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
             @Override
             public void onClick(View view) {
                 if(respuesta_usuario!=4){
+                    Utils.seccionActual="mate";
                     if(respuesta_usuario==0){
                         if(opcionA.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
 
                         }else{
+                            Utils.respuesta = preguntas.get(indice_pregunta).getRespuesta();
+                            Utils.explicacion = preguntas.get(indice_pregunta).getExplicacion();
                             ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
@@ -144,6 +152,8 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
                         if(opcionB.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
                         }else{
+                            Utils.respuesta = preguntas.get(indice_pregunta).getRespuesta();
+                            Utils.explicacion = preguntas.get(indice_pregunta).getExplicacion();
                             ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
@@ -151,6 +161,8 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
                         if(opcionC.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
                         }else{
+                            Utils.respuesta = preguntas.get(indice_pregunta).getRespuesta();
+                            Utils.explicacion = preguntas.get(indice_pregunta).getExplicacion();
                             ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }
@@ -158,6 +170,8 @@ public class Fragment_Matematicas extends android.support.v4.app.Fragment{
                         if(opcionD.getText().equals(preguntas.get(indice_pregunta).getRespuesta())){
                             ((Activity_Preguntas)getActivity()).changeFragment(5);
                         }else{
+                            Utils.respuesta = preguntas.get(indice_pregunta).getRespuesta();
+                            Utils.explicacion = preguntas.get(indice_pregunta).getExplicacion();
                             ((Activity_Preguntas)getActivity()).changeFragment(6);
                             ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                         }

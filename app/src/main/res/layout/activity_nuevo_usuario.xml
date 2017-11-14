@@ -100,10 +100,16 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="50dp"
             android:layout_weight="1"
-            android:background="@mipmap/botonregistro"
+            android:background="@color/button_color"
             android:elevation="0dp"
             android:layout_marginBottom="50dp"
-            android:layout_margin="40dp" />
+            android:layout_margin="40dp"
+            android:text="listo!"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

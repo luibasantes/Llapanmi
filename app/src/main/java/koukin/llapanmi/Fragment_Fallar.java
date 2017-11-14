@@ -49,7 +49,6 @@ public class Fragment_Fallar extends android.support.v4.app.Fragment{
 
                 ((Activity_Preguntas)getActivity()).changeFragment(((Activity_Preguntas)getActivity()).getTema());
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
-                Utils.MaxScore= 0;
                 Utils.acumPoints=0;
             }
         });
@@ -58,13 +57,16 @@ public class Fragment_Fallar extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view) {
-                Utils.MaxScore= Utils.acumPoints;
+                if(Utils.acumPoints> Utils.MaxScore)
+                    Utils.MaxScore= Utils.acumPoints;
                 Utils.acumPoints=0;
                 ((Activity_Preguntas)getActivity()).vaciarRepetidas();
                 Intent i=new Intent(getActivity(),Activity_Menu_Principal.class);
                 i.putExtra("section",Utils.seccionActual);
                 i.putExtra("puntaje",Utils.MaxScore);
+                System.out.println("SCORE OBTNEIDO EN ESTA SECCION: "+Utils.MaxScore);
                 startActivity(i);
+                getActivity().finish();
             }
         });
 

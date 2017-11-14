@@ -66,9 +66,9 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="0.5">
 
                 <TextView
                     android:text="0"
@@ -92,9 +92,9 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="0.5">
 
                 <TextView
                     android:text="0"
@@ -118,9 +118,9 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="0.5">
 
                 <TextView
                     android:text="0"
@@ -144,9 +144,9 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="0.5">
 
                 <TextView
                     android:text="0"
@@ -164,7 +164,8 @@
                     android:layout_weight="1"
                     android:text="LOGICA"
                     android:textColor="#33d9ff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:gravity="center"/>
             </LinearLayout>
 
         </LinearLayout>

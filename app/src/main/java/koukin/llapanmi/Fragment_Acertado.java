@@ -47,6 +47,7 @@ public class Fragment_Acertado extends android.support.v4.app.Fragment{
                 i.putExtra("section",Utils.seccionActual);
                 i.putExtra("puntaje",Utils.acumPoints);
                 startActivity(i);
+                getActivity().finish();
             }
         });
 

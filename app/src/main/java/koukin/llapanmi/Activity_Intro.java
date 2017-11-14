@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -95,11 +96,25 @@ public class Activity_Intro extends AppCompatActivity {
 
                 }
 
-                if(!isAssetExists("user_data.cfg")) {
+                InputStream inputStream =null;
+
+                try {
+                    inputStream = Activity_Intro.this.openFileInput("user_data.cfg");
+                    System.out.println("Succesful try!!!!!!!!!!!!");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                if(inputStream==null) {
                     Intent i = new Intent(getBaseContext(), Activity_Nuevo_Usuario.class);
                     startActivity(i);
                 }
                 else{
+                    try {
+                        inputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     Intent i = new Intent(getBaseContext(), Activity_Menu_Principal.class);
                     startActivity(i);
                 }
